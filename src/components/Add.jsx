@@ -33,8 +33,6 @@ function Add() {
       value,
     };
 
-    console.log({ newItem, type });
-
     dispatch({ type: action, payload: newItem });
 
     inputRef.current.description.value = "";

@@ -61,7 +61,6 @@ export default function Provider({ children }) {
 
   useEffect(() => {
     localStorage.setItem("budget", JSON.stringify(state));
-    console.log(state);
   }, [state]);
 
   return (
