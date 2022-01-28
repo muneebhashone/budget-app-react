@@ -66,16 +66,20 @@ function Add() {
         <input
           ref={(el) => (inputRef.current.description = el)}
           type="text"
-          className="add__description"
+          className={`add__description ${type === "inc" ? "" : "red-focus"}`}
           placeholder="Add description"
         />
         <input
           ref={(el) => (inputRef.current.value = el)}
           type="number"
-          className="add__value"
+          className={`add__value ${type === "inc" ? "" : "red-focus"}`}
           placeholder="Value"
         />
-        <button onClick={handleSubmit} ref={submitBtnRef} className="add__btn">
+        <button
+          onClick={handleSubmit}
+          ref={submitBtnRef}
+          className={`add__btn ${type === "inc" ? "" : "red"}`}
+        >
           <i className="ion-ios-checkmark-outline"></i>
         </button>
       </div>
