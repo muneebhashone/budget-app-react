@@ -6,6 +6,8 @@ import fn from "../lib/formatNumber";
 function Layout({ children }) {
   const { getTotalIncome, getTotalExpense } = useAppContext();
 
+  const isAmountPlus = getTotalIncome >= getTotalExpense;
+
   const getPercentage =
     Math.round((getTotalExpense / getTotalIncome) * 100) || 0;
 
@@ -20,7 +22,7 @@ function Layout({ children }) {
             </span>
           </div>
 
-          <div className="budget__value">{`+ ${fn(
+          <div className="budget__value">{`${isAmountPlus ? "+" : ""} ${fn(
             getTotalIncome - getTotalExpense
           )}`}</div>
 

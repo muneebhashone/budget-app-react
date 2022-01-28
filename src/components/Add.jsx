@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState, useRef, useEffect, useCallback } from "react";
 import { useAppContext } from "../Context/AppContext";
 
 function Add() {
@@ -12,7 +12,7 @@ function Add() {
     submitBtnRef.current.click();
   };
 
-  const handleSubmit = () => {
+  const handleSubmit = useCallback(() => {
     let action;
     const description = inputRef.current.description.value;
     const value = inputRef.current.value.value;
@@ -37,7 +37,7 @@ function Add() {
 
     inputRef.current.description.value = "";
     inputRef.current.value.value = "";
-  };
+  }, [type, dispatch]);
 
   useEffect(() => {
     document.addEventListener("keydown", handleEnterKey);
@@ -54,7 +54,6 @@ function Add() {
           value={type}
           onChange={(e) => {
             setType(e.target.value);
-            console.log(e.target.value);
           }}
           className={`add__type ${type === "inc" ? "" : "red-focus"}`}
         >
