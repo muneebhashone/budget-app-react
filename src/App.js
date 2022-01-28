@@ -1,24 +1,22 @@
-import logo from './logo.svg';
-import './App.css';
+import Add from "./components/Add";
+import Container from "./components/Container";
+import Layout from "./components/Layout";
+import ListOverview from "./components/ListOverview";
+import { useAppContext } from "./Context/AppContext";
 
 function App() {
+  const { state } = useAppContext();
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <Layout>
+        <Add />
+        <Container>
+          <ListOverview type="income" list={state.incomes} />
+          <ListOverview type="expenses" list={state.expenses} />
+        </Container>
+      </Layout>
+    </>
   );
 }
 
